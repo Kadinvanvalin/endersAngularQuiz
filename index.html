@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="diveLog">
+<head>
+  <title>Dive Log (ng-controller)</title>
+  <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container-fluid">
+    <h1>Enders Quiz</h1>
+    <div class="row"
+    ng-controller="diveLogCtrl">
+      <div class="col-sm-4"
+      ng-show="view=='preQuiz'">
+        <h3>Are you ready to start the quiz?</h3>
+        <button ng-click="startQuiz()">Start Quiz</button>
+      </div> 
+
+      <div 
+      ng-show="view=='quiz'"
+      >      
+        <h2>{{questions[quizNum].question}}</h2>
+        <div class="col-sm-4">
+        <form>
+          <input type="radio" ng-value="'correct'" ng-model="test" name="test" class="btn btn-default" ng-click="selectAnswer(0)">{{questions[quizNum].answers[0]}}</input></br>  
+          <input type="radio" ng-value="'incorrect'" ng-model="test" name="test" class="btn btn-default" ng-click="selectAnswer(1)">{{questions[quizNum].answers[1]}}</input></br>
+          <input type="radio" ng-value="'incorrect'" ng-model="test" name="test" class="btn btn-default" ng-click="selectAnswer(2)"> {{questions[quizNum].answers[2]}}</input></br>  
+          <input type="radio" ng-value="'incorrect'" ng-model="test" name="test" class="btn btn-default" ng-click="selectAnswer(3)">{{questions[quizNum].answers[3]}}</input></br>
+        </div>
+        <input type="submit" name="ans" class="btn btn-default" ng-disabled="!enableSubmit()" ng-click="nextQuestion()">
+          <span>{{ans}}</span>
+        </form>
+        <div>you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</div>
+      </div>
+      <div ng-show="view=='post'">
+        <div><h2>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2></div>
+      </div>
+    </div>   
+  </div>
+<script src="./lib/angular/angular.min.js"></script>
+<script src="state.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
