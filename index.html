@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="diveLog">
+<html ng-app="quizApp">
 <head>
   <title>Dive Log (ng-controller)</title>
   <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -8,7 +8,7 @@
   <div class="container-fluid">
     <h1>Enders Quiz</h1>
     <div class="row"
-    ng-controller="diveLogCtrl">
+    ng-controller="quizAppCtrl">
       <div class="col-sm-4"
       ng-show="view=='preQuiz'">
         <h3>Are you ready to start the quiz?</h3>
@@ -32,7 +32,10 @@
         <div>you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</div>
       </div>
       <div ng-show="view=='post'">
-        <div><h2>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2></div>
+        <div>
+            <h2>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2>
+              <button ng-click="restart()">restart</button>
+        </div>
       </div>
     </div>   
   </div>
