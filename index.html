@@ -18,14 +18,24 @@
       <div 
       ng-show="view=='quiz'"
       >      
-        <h2>{{questions[quizNum].question}}</h2>
+        <h2>{{state[quizNum].question}}</h2>
         <div class="col-sm-4">
         <form>
-        <li ng-repeat="questions in questions[quizNum].answers">
-          <input type="radio" ng-value="{{questions}}" ng-model="test" name="test" class="btn btn-default" ng-click="selectAnswer(0)">{{questions}}</input></br>  
-        </li>
+            <li ng-repeat="question in state[quizNum].answers">
+              <input 
+              type="radio" 
+              ng-value='{{question.value}}'
+              ng-model="test" 
+              ng-click="setAnswer(question.value)"
+              name="test" 
+              class="btn btn-default" 
+              >
+              {{question.value}}
+              </input>
+              </br>  
+            </li>
         </div>
-        <input type="submit" name="ans" class="btn btn-default" ng-disabled="!enableSubmit()" ng-click="nextQuestion()">
+        <input type="submit" name="ans" class="btn btn-default"  ng-disabled="{{selectedAns}}" ng-click="nextQuestion(test)">
           <span>{{ans}}</span>
         </form>
         <div>you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</div>

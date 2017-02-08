@@ -2,15 +2,17 @@
       .controller('quizAppCtrl', quizAppCtrl);
     
     function quizAppCtrl($scope) {
-      $scope.questions = questions;
+      $scope.state = state;
       $scope.quizNum = quizNum;
       $scope.correctAnswers = correctAnswers;
+
       
      
       function setView(view){
       	$scope.view = view;
       }
-      function shuffle(array) {
+
+      shuffle = function(array) {
   var m = array.length, t, i;
 
   // While there remain elements to shuffle…
@@ -28,25 +30,28 @@
   return array;
 }
 
-     
-      $scope.startQuiz = function(){
+           $scope.startQuiz = function(){
+            shuffle($scope.state[quizNum].answers);
+
       	setView('quiz');
       }
       $scope.enableSubmit = function(){
         return 1;
       }
 
-      $scope.selectAnswer = function(num){
-       
-        console.log(num);
-      } 
-      $scope.nextQuestion = function(){
-         if($scope.test == 'correct'){
+      $scope.setAnswer = function(selectedAns){
+        console.log(selectedAns);
+        $scope.selectedAns = selectedAns;
+        
+      }
+
+      $scope.nextQuestion = function(selected){
+        shuffle($scope.state[quizNum].answers);
+         if($scope.selectedAns == state[$scope.quizNum].correctAns){
           $scope.correctAnswers++; 
         }
         if($scope.quizNum >= 4){setView('post');}
         $scope.quizNum++;
-        console.log(quizNum);
       }
       $scope.restart = function(){
         setView('preQuiz');
@@ -55,5 +60,5 @@
         
       }
       setView('preQuiz');
-      console.log($scope.view);
+      
     }
