@@ -1,5 +1,5 @@
   angular.module('quizApp', [])
-      .controller('quizAppCtrl', quizAppCtrl);
+      .controller('QuizAppController', quizAppCtrl);
     
     function quizAppCtrl($scope) {
       $scope.state = state;
@@ -46,7 +46,7 @@
       }
 
       $scope.nextQuestion = function(selected){
-        shuffle($scope.state[quizNum].answers);
+        shuffle($scope.state[$scope.quizNum].answers);
          if($scope.selectedAns == state[$scope.quizNum].correctAns){
           $scope.correctAnswers++; 
         }

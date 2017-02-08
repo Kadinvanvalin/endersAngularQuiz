@@ -2,13 +2,14 @@
 <html ng-app="quizApp">
 <head>
   <title>Dive Log (ng-controller)</title>
+  <link rel="stylesheet" type="text/css" href="./lib/styles/main.css">
   <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
   <div class="container-fluid">
     <h1>Enders Quiz</h1>
     <div class="row"
-    ng-controller="quizAppCtrl">
+    ng-controller="QuizAppController">
       <div class="col-sm-4"
       ng-show="view=='preQuiz'">
         <h3>Are you ready to start the quiz?</h3>
@@ -22,9 +23,10 @@
         <div class="col-sm-4">
         <form>
             <li ng-repeat="question in state[quizNum].answers">
+            <label> 
               <input 
               type="radio" 
-              ng-value='{{question.value}}'
+              ng-value='"{{question.value}}"'
               ng-model="test" 
               ng-click="setAnswer(question.value)"
               name="test" 
@@ -32,6 +34,7 @@
               >
               {{question.value}}
               </input>
+              </label>
               </br>  
             </li>
         </div>
@@ -48,7 +51,9 @@
       </div>
     </div>   
   </div>
-<script src="./lib/angular/angular.min.js"></script>
+  <script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/angular/angular-1.6.1/angular.js"></script>
+<script src="./lib/bootstrap/bootstrap.min.js"></script>
 <script src="state.js"></script>
 <script src="app.js"></script>
 </body>
