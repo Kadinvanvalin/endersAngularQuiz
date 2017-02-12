@@ -46,7 +46,71 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/*-----------------CUSTOM STYLES-------------------*/
+h1 {
+    padding: 20px;
+  	
+    text-align: center;
+    border-bottom: 6px solid #7CA9AD;
+    border-left:3px solid #7CA9AD;
+    background-color: lightgrey;
+     border-radius: 5px;
+}
+h3{
+	text-align: center;
+}
+.btn-group{
+	width:100%;
+}
+ul{
+	height: 50vh;
+	width:100%;
+}
+.answers-btn{
+	height: 30%;
+	width:50%;
+	display:inline-block;
+}
+label{
+	display: block;
+	margin: 10px;
+	width: 100%;
+}
 
 div{
-	background-color: mistyrose;
+	background-color: #BAD1CA;
+	margin: 10px;
+}
+ul{
+	list-style: none;
+}
+
+.container-fluid{
+	 margin: 0px;
+	height: 100vh;
+}
+.questions{
+	margin-bottom: 50px;
+}
+.question-container{
+	width: 100%;
+	 text-align: center;
+    border-bottom: 6px solid #7CA9AD;
+    border-left:3px solid #7CA9AD;
+    background-color: lightgrey;
+     border-radius: 5px;
+
+}
+.status{
+	font-size:24px;
+}
+label{
+	font-size: 50px;
+}
+input .hidden{
+
+	visibility: hidden;
+}
+li{
+	display:inline-block;
 }

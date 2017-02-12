@@ -32,22 +32,15 @@
 
            $scope.startQuiz = function(){
             shuffle($scope.state[quizNum].answers);
-
       	setView('quiz');
       }
-      $scope.enableSubmit = function(){
-        return 1;
-      }
+      
 
-      $scope.setAnswer = function(selectedAns){
-        console.log(selectedAns);
-        $scope.selectedAns = selectedAns;
-        
-      }
+     
 
       $scope.nextQuestion = function(selected){
         shuffle($scope.state[$scope.quizNum].answers);
-         if($scope.selectedAns == state[$scope.quizNum].correctAns){
+         if(selected == state[$scope.quizNum].correctAns){
           $scope.correctAnswers++; 
         }
         if($scope.quizNum >= 4){setView('post');}

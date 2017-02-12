@@ -6,53 +6,79 @@
   <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" ng-controller="QuizAppController">
+  <!-- create a nav bar -->
     <h1>Enders Quiz</h1>
-    <div class="row"
-    ng-controller="QuizAppController">
-      <div class="col-sm-4"
-      ng-show="view=='preQuiz'">
+    <!-- PREQUIZ -->
+  <section class="container" ng-show="view=='preQuiz'">
+ 
+    <div class="row">
+      <div class="col-sm-12">
         <h3>Are you ready to start the quiz?</h3>
-        <button ng-click="startQuiz()">Start Quiz</button>
-      </div> 
+      </div>
+    </div>
+    <div class ="row"> 
+      <div class="col-sm-5 .col-sm-offset-6 .col-md-6 .col-md-offset-6"> 
+      
+        <button type="button" class="btn btn-primary col-xs-offset-8 col-sm-offset-8 col-m-offset-8 col-lg-offset-8" ng-click="startQuiz()">Start Quiz</button>
+     
+      </div>
+    </div>
+  
+  </section>
 
-      <div 
-      ng-show="view=='quiz'"
-      >      
-        <h2>{{state[quizNum].question}}</h2>
-        <div class="col-sm-4">
-        <form>
-            <li ng-repeat="question in state[quizNum].answers">
-            <label> 
-              <input 
-              type="radio" 
-              ng-value='"{{question.value}}"'
-              ng-model="test" 
-              ng-click="setAnswer(question.value)"
-              name="test" 
-              class="btn btn-default" 
-              >
-              {{question.value}}
-              </input>
-              </label>
-              </br>  
-            </li>
-        </div>
-        <input type="submit" name="ans" class="btn btn-default"  ng-disabled="{{selectedAns}}" ng-click="nextQuestion(test)">
-          <span>{{ans}}</span>
-        </form>
-        <div>you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</div>
-      </div>
-      <div ng-show="view=='post'">
-        <div>
-            <h2>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2>
-              <button ng-click="restart()">restart</button>
-        </div>
-      </div>
-    </div>   
+<!-- QUIZ -->
+
+<section class="container" ng-show="view=='quiz'"> 
+  <div class="row"> 
+    <div class="col-sm-12 col-md-12 question-container">
+      <h2 class="questions">{{state[quizNum].question}}</h2>
+    </div>     
   </div>
-  <script src="./lib/jquery/jquery.min.js"></script>
+<div class="col-sm-12">
+  <form>
+    <div class="btn-group" data-toggle="buttons">
+      <ul class="input-group">  
+        <li class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="question in state[quizNum].answers">
+          <label class="btn btn-primary" ng-click="nextQuestion(question.value)"> 
+            <input 
+            type="radio" 
+            ng-value='"{{question.value}}"'
+            ng-model="test" 
+
+            name="test" 
+            class="hidden btn btn-default" 
+            >
+            {{question.value}}
+          </input>
+        </label>
+
+      </li>
+    </ul>
+  </div>
+</div>
+  </form>
+
+<div class="row">
+  <div class="col-sm-12">
+    <p class="status">you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</p>
+  </div>
+</div>
+
+</section>
+<!-- POST-QUIZ -->
+<section class="container" ng-show="view=='post'">
+  <div>
+    <h3>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2>
+    
+      <button type="button" type="button" class="btn btn-primary col-xs-offset-8 col-sm-offset-8 col-m-offset-8 col-lg-offset-8"  ng-click="restart()">restart</button>
+    
+  </div>
+</div>
+</section>
 <script src="./lib/angular/angular-1.6.1/angular.js"></script>
+<script src="./lib/jquery/jquery.min.js"></script>
+
 <script src="./lib/bootstrap/bootstrap.min.js"></script>
 <script src="state.js"></script>
 <script src="app.js"></script>
