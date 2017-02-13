@@ -6,11 +6,14 @@
   <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="container-fluid" ng-controller="QuizAppController">
+  <div class="container-fluid">
   <!-- create a nav bar -->
     <h1>Enders Quiz</h1>
+    <div ng-view>
+      <a href="#/preQuiz"></a>
+    </div>
     <!-- PREQUIZ -->
-  <section class="container" ng-show="view=='preQuiz'">
+ <!--  <section class="container" ng-show="view=='preQuiz'">
  
     <div class="row">
       <div class="col-sm-12">
@@ -25,10 +28,10 @@
       </div>
     </div>
   
-  </section>
+  </section> -->
 
 <!-- QUIZ -->
-
+<!-- 
 <section class="container" ng-show="view=='quiz'"> 
   <div class="row"> 
     <div class="col-sm-12 col-md-12 question-container">
@@ -65,19 +68,21 @@
   </div>
 </div>
 
-</section>
+</section> -->
 <!-- POST-QUIZ -->
-<section class="container" ng-show="view=='post'">
+<!-- <section class="container" ng-show="view=='post'">
   <div>
     <h3>you finished the quiz! you got {{correctAnswers}} questions right! try again?</h2>
     
       <button type="button" type="button" class="btn btn-primary col-xs-offset-8 col-sm-offset-8 col-m-offset-8 col-lg-offset-8"  ng-click="restart()">restart</button>
     
   </div>
-</div>
+</div> -->
 </section>
-<script src="./lib/angular/angular-1.6.1/angular.js"></script>
 <script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/angular/angular-1.6.1/angular.js"></script>
+<script src="./lib/angular/angular-1.6.1/angular-route.min.js"></script>
+
 
 <script src="./lib/bootstrap/bootstrap.min.js"></script>
 <script src="state.js"></script>

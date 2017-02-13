@@ -1,18 +1,55 @@
-  angular.module('quizApp', [])
-      .controller('QuizAppController', quizAppCtrl);
-    
-    function quizAppCtrl($scope) {
+ var myApp = angular.module('quizApp', ["ngRoute"]);
+
+
+    myApp.config(function ($routeProvider){
+
+      $routeProvider
+
+        .when('/',{
+          templateUrl: "pages/preQuiz.html",
+          controller:'PreQuizController'
+        })
+        .when('/quiz',{
+          templateUrl: "pages/quiz.html",
+          controller:'QuizAppController'
+        })
+        .when('/post',{
+          templateUrl: "pages/postQuiz.html",
+          controller:'PostQuizController'
+        })
+      });
+
+
+
+      myApp.controller("PreQuizController", preQuizCtrl);
+      myApp.controller('QuizAppController', quizCtrl);
+      myApp.controller("PostQuizController", postQuizCtrl);
+
+
+    function preQuizCtrl($scope, $location){
+ //$scope.state = state;
+      $scope.startQuiz = function(){
+              //shuffle($scope.state[quizNum].answers);
+         $location.path('/quiz');
+        }
+
+
+
+
+
+
+    }
+
+
+
+    function quizCtrl($scope, $location) {
       $scope.state = state;
       $scope.quizNum = quizNum;
       $scope.correctAnswers = correctAnswers;
 
       
      
-      function setView(view){
-      	$scope.view = view;
-      }
-
-      shuffle = function(array) {
+  shuffle = function(array) {
   var m = array.length, t, i;
 
   // While there remain elements to shuffle…
@@ -29,11 +66,9 @@
 
   return array;
 }
+    
 
-           $scope.startQuiz = function(){
-            shuffle($scope.state[quizNum].answers);
-      	setView('quiz');
-      }
+           
       
 
      
@@ -43,15 +78,24 @@
          if(selected == state[$scope.quizNum].correctAns){
           $scope.correctAnswers++; 
         }
-        if($scope.quizNum >= 4){setView('post');}
+        if($scope.quizNum >= 4){$location.path('/post');}
         $scope.quizNum++;
       }
+     
+      //$location.path('/');
+      
+    }
+
+
+
+
+    function postQuizCtrl($scope, $location){
       $scope.restart = function(){
-        setView('preQuiz');
+        $location.path('/');
         $scope.quizNum = 0;
         $scope.correctAnswers = 0;
         
       }
-      setView('preQuiz');
-      
+
+
     }
