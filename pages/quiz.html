@@ -1,37 +1,35 @@
-<section class="container"> 
-  <div class="row"> 
-    <div class="col-sm-12 col-md-12 question-container">
-      <h2 class="questions">{{state[quizNum].question}}</h2>
-    </div>     
-  </div>
-<div class="col-sm-12">
-  <form>
-    <div class="btn-group" data-toggle="buttons">
-      <ul class="input-group">  
-        <li class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="question in state[quizNum].answers">
-          <label class="btn btn-primary" ng-click="nextQuestion(question.value)"> 
-            <input 
-            type="radio" 
-            ng-value='"{{question.value}}"'
-            ng-model="test" 
+<section class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 question-container">
+            <h2 class="questions">{{state[quizNum].question}}</h2>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <form>
+            <div class="btn-group" data-toggle="buttons">
+                <ul class="input-group">
+                    <li class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="question in state[quizNum].answers">
+                        <label class="btn btn-primary" ng-click="nextQuestion(question.value)">
+                            <input
+                                    type="radio"
+                                    ng-value='"{{question.value}}"'
+                                    ng-model="test"
 
-            name="test" 
-            class="hidden btn btn-default" 
-            >
-            {{question.value}}
-          </input>
-        </label>
+                                    name="test"
+                                    class="hidden btn btn-default"
+                            >
+                            {{question.value}}
+                            </input>
+                        </label>
 
-      </li>
-    </ul>
-  </div>
-</div>
-  </form>
-
-<div class="row">
-  <div class="col-sm-12">
-    <p class="status">you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</p>
-  </div>
-</div>
-
+                    </li>
+                </ul>
+            </div>
+    </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="status">you are on question {{quizNum}} of 5 and have {{correctAnswers}} correct.</p>
+        </div>
+    </div>
 </section>
